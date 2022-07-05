@@ -10,9 +10,18 @@ for folder in FolderList:
 
     SavePath = os.path.join(folder, "AgiSoftOut")
     ProjectPach = os.path.join(SavePath, "Auto_Project.psz")
+
+    RCSavePath = os.path.join(folder, "RCOutput")
+    RCProjectPach = os.path.join(RCSavePath, "project.rcproj")
+
     if os.path.exists(ProjectPach):
         print("[LOG] " + folder + "ProjectFile Exist:" + ProjectPach)
         continue
+
+    if os.path.exists(RCProjectPach):
+        print("[LOG] " + folder + "RC ProjectFile Exist:" + RCProjectPach)
+        continue
+
     print("[LOG] " + folder + "Begin Photo Align")
     doc = Metashape.app.document
     chunk = doc.addChunk()

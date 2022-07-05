@@ -5,6 +5,15 @@ name = "pypi"
 
 [packages]
 pyqt5 = "*"
+numpy = "*"
+scikit-image = "*"
+scipy = "*"
+rawpy = "*"
+imageio = "*"
+matplotlib = "*"
+notebook = "*"
+imagecodecs = "*"
+opencv-python = "*"
 
 [dev-packages]
 
