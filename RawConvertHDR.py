@@ -65,7 +65,7 @@ def RawProcess(RawPath):
 
     imageio.imsave(ProcessedPath, np.uint8(np.clip(res_mertens*255,0,255)), quality=100)
     
-    #print(RawPath + " 处理结束")
+    #print(RawPath + " 处理完成")
     
 
 if __name__ == '__main__':
@@ -74,7 +74,7 @@ if __name__ == '__main__':
     #print(RawList)
     os.makedirs(OutputPath, exist_ok = True)
 
-    pool = Pool(16)#进程数
+    pool = Pool(16)#线程数
     #PProgress = PoolProgress(pool)
     pool_outputs = pool.map_async(RawProcess, RawList)
 
@@ -82,9 +82,9 @@ if __name__ == '__main__':
     #PProgress.track(pool_outputs)
     track_job(pool_outputs)
 
-    # close 保证不会有新的任务加入到pool中
+    # close 阻止新的task被加入pool
     pool.close()
-    # join 使得主进程会在所有子进程结束之后再结束
+    # join 使得主进程在子进程之后结束
     pool.join()
 
     
@@ -94,21 +94,5 @@ if __name__ == '__main__':
 
     ProcessTime = end - start
     TimePerTask = ProcessTime/len(RawList)
-    print('总处理时间： %.2f 秒.' % (ProcessTime))
-    print('平均每张处理时间： %.2f 秒.' % (TimePerTask))
-
-    """
-    inputs = [0, 1, 2, 3]
-    pool = Pool(4)
-
-    # Map async 非阻塞式线程池
-    pool_outputs = pool.map_async(main_map, inputs)
-    print(" pool.map main block")
-
-    # close 保证不会有新的任务加入到pool中
-    pool.close()
-    # join 使得主进程会在所有子进程结束之后再结束
-    pool.join()
-
-    print(" pool.map main block finished")
-    """
+    print('Raw处理总耗时 %.2f 秒.' % (ProcessTime))
+    print('平均每一张耗时 %.2f 秒.' % (TimePerTask))
