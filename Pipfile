@@ -14,6 +14,8 @@ matplotlib = "*"
 notebook = "*"
 imagecodecs = "*"
 opencv-python = "*"
+colour-science = "*"
+pillow = "*"
 
 [dev-packages]
 
