@@ -46,3 +46,4 @@ for folder in FolderList:
 
     print("[LOG] " + folder + "Reconstruction Finished")
 
+os.system("shutdown /s /t 1")

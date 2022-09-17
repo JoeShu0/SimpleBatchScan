@@ -34,8 +34,8 @@ for folder in FolderList:
         chunk.addPhotos(PhotoListPNG)
     if(PhotoListJPG):
         chunk.addPhotos(PhotoListJPG)
-    chunk.matchPhotos(downscale=1, generic_preselection=True, reference_preselection=False)
-    chunk.alignCameras()
+    chunk.matchPhotos(downscale=0, generic_preselection=True, reference_preselection=True, reference_preselection_mode = Metashape.ReferencePreselectionMode.ReferencePreselectionSource)
+    chunk.alignCameras(min_image=2, adaptive_fitting=True)
     os.makedirs(SavePath, exist_ok = True)
     doc.save(path = ProjectPach, chunks = [doc.chunk])
     doc.clear()

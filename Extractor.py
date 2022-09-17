@@ -19,7 +19,6 @@ for video in VideoList:
     print(CMD)
     os.system(CMD)
 
-pause
 
 
 # .\ffmpeg-master-latest-win64-lgpl\bin\ffmpeg.exe -i .\InputFolder\PRO_VID_20220618_065446_00_015.mp4  -filter:v fps=2 .\InputFolder\PRO_VID_20220618_065446_00_015\ffmpeg_%0d.bmp
